@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class CardDealer : MonoBehaviour
 {
-    [SerializeField] private List<Card> cards;
+  
+
+    [SerializeField] private Card _cardTemplate;
     [SerializeField] private int _cardCount;
     [SerializeField] private CellCreator _cellCreator;
     private List<Card> _randomDeck = new List<Card>();
     Dictionary<int, int> usedID = new Dictionary<int, int>();
+
+    [SerializeField] private CardBundleData[] _cardBundleData;
     private void Start()
     {
-        
+        //Debug.Log(card.Description);
         Shuffle();
         Deal();
     }
@@ -31,8 +35,7 @@ public class CardDealer : MonoBehaviour
            currentRandomId = GetRandomCardId();
             if (!usedID.ContainsKey(currentRandomId))
             {
-                _randomDeck.Add(cards[currentRandomId]);
-                usedID.Add(currentRandomId, i);
+                usedID.Add(i, currentRandomId );
                 i++;
             }
             j++;
@@ -46,15 +49,16 @@ public class CardDealer : MonoBehaviour
         _cellCreator.Create(_cardCount);
         for (int i = 0; i < _cardCount; i++)
         {
-            Instantiate(_randomDeck[i]);
-            Card card = Instantiate(_randomDeck[i], _cellCreator.Cells[i].CardSlotTransform) as Card;
+            Card randomCard = Instantiate(_cardTemplate, _cellCreator.Cells[i].CardSlotTransform);
+            randomCard.Initialize(_cardBundleData[0].CardData[usedID[i]]);
+            _randomDeck.Add(randomCard);
             
         }
     }
 
     private int GetRandomCardId()
     {
-        int randomId = Random.Range(0, cards.Capacity - 1);
+        int randomId = Random.Range(0, _cardBundleData[0].CardData.Length - 1);
         return randomId;
     }
 }
