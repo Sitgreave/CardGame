@@ -9,7 +9,8 @@ public class CellCreator : MonoBehaviour
     [SerializeField] private Transform _gridLayoutTransform;
     [SerializeField] Cell _cell;
     private const int _cellsInRow = 3;
-    private List<Cell> _cells;
+
+    private List<Cell> _cells = new List<Cell>();
     public List<Cell> Cells => _cells;
     public void Create(int cellCount)
     {
@@ -18,8 +19,8 @@ public class CellCreator : MonoBehaviour
             _cells.Clear();
             for (int i = 0; i < cellCount; i++)
             {
-                Instantiate(_cell, _gridLayoutTransform);
-                _cells.Add(_cell);
+              Cell cell = Instantiate(_cell, _gridLayoutTransform);
+                _cells.Add(cell);
             }
         }
         else Debug.Log("Incorrect cell count (not divisible by 3) ");

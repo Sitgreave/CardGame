@@ -6,5 +6,5 @@ public class Cell : MonoBehaviour
 {
   [SerializeField]  private Transform _cardSlotTransform;
 
-    public Transform CardSlotTransorm => _cardSlotTransform;
+    public Transform CardSlotTransform => _cardSlotTransform;
 }

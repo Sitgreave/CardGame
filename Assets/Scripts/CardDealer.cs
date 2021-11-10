@@ -7,20 +7,22 @@ public class CardDealer : MonoBehaviour
     [SerializeField] private List<Card> cards;
     [SerializeField] private int _cardCount;
     [SerializeField] private CellCreator _cellCreator;
-    private readonly List<Card> _randomDeck;
-
-
+    private List<Card> _randomDeck = new List<Card>();
+    Dictionary<int, int> usedID = new Dictionary<int, int>();
     private void Start()
     {
+        
         Shuffle();
         Deal();
     }
     public void Shuffle()
     {
+       
+    
         int i = 0;
         int currentRandomId;
-        _randomDeck.Clear();
-        Dictionary <int, int>  usedID = null;
+        // _randomDeck.Clear();
+        int j = 0;
 
 
         while ( i < _cardCount)
@@ -32,7 +34,9 @@ public class CardDealer : MonoBehaviour
                 _randomDeck.Add(cards[currentRandomId]);
                 usedID.Add(currentRandomId, i);
                 i++;
-            }            
+            }
+            j++;
+            if (j > 100) break;
         }
     }
 
@@ -42,7 +46,9 @@ public class CardDealer : MonoBehaviour
         _cellCreator.Create(_cardCount);
         for (int i = 0; i < _cardCount; i++)
         {
-            Instantiate(_randomDeck[i], _cellCreator.Cells[i].CardSlotTransorm);
+            Instantiate(_randomDeck[i]);
+            Card card = Instantiate(_randomDeck[i], _cellCreator.Cells[i].CardSlotTransform) as Card;
+            
         }
     }
 

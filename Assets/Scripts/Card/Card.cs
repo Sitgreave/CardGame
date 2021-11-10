@@ -4,6 +4,5 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-  [SerializeField]  private Sprite _sprite; //!!
-
+    //private Transform _cardSlotTransform;
 }
