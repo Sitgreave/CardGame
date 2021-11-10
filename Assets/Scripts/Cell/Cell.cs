@@ -4,5 +4,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(LayoutElement))]
 public class Cell : MonoBehaviour
 {
-    private Sprite _cardSprite;
+  [SerializeField]  private Transform _cardSlotTransform;
+
+    public Transform CardSlotTransorm => _cardSlotTransform;
 }

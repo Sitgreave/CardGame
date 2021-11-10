@@ -7,14 +7,19 @@ using UnityEngine.UI;
 public class CellCreator : MonoBehaviour
 {
     [SerializeField] private Transform _gridLayoutTransform;
+    [SerializeField] Cell _cell;
     private const int _cellsInRow = 3;
-    public void Create(Cell cell, int cellCount)
+    private List<Cell> _cells;
+    public List<Cell> Cells => _cells;
+    public void Create(int cellCount)
     {
         if (cellCount % _cellsInRow == 0) // кратно ли введёное значение минимальному количеству строк (3)
         {
+            _cells.Clear();
             for (int i = 0; i < cellCount; i++)
             {
-                Instantiate(cell, _gridLayoutTransform);
+                Instantiate(_cell, _gridLayoutTransform);
+                _cells.Add(_cell);
             }
         }
         else Debug.Log("Incorrect cell count (not divisible by 3) ");
