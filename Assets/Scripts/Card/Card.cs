@@ -1,23 +1,36 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Events;
+
+[RequireComponent(typeof(SpriteRenderer))]
 
 public class Card : MonoBehaviour
 {
-    //private Transform _cardSlotTransform;
     private Sprite _sprite;
     private string _description;
 
     public string Description => _description;
-    SpriteRenderer spriteRenderer;
+    private SpriteRenderer _spriteRenderer;
+    [SerializeField] private EventManager _eventManager;
+
+    
    private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
     public void Initialize(CardData cardData)
     {
         _description = cardData.Description;
         _sprite = cardData.Sprite;
-        spriteRenderer.sprite = _sprite;
+        _spriteRenderer.sprite = _sprite;
     }
+
+    private void OnMouseDown()
+    {
+        if(_eventManager != null)
+        _eventManager.unityEvent.Invoke();
+    }
+    
+    
+
+
 }
