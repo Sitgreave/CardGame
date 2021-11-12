@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Events;
 
 [RequireComponent(typeof(SpriteRenderer))]
 
@@ -10,10 +9,12 @@ public class Card : MonoBehaviour
 
     public string Description => _description;
     private SpriteRenderer _spriteRenderer;
-    [SerializeField] private EventManager _eventManager;
 
-    
-   private void Awake()
+   [SerializeField] private ClickHandler _clickHandler;
+   
+
+
+    private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
@@ -26,11 +27,11 @@ public class Card : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if(_eventManager != null)
-        _eventManager.unityEvent.Invoke();
+        _clickHandler.TryClick();
     }
-    
-    
+
+
+
 
 
 }

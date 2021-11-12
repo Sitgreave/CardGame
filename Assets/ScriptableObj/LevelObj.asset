@@ -14,8 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelData:
   - _cardCount: 3
-    _cardTypeVariants: 01000000
+    _deckTypeVariants: 00000000
+    _repeatCount: 2
   - _cardCount: 6
-    _cardTypeVariants: 0200000001000000
+    _deckTypeVariants: 0000000001000000
+    _repeatCount: 2
   - _cardCount: 9
-    _cardTypeVariants: 020000000100000002000000
+    _deckTypeVariants: 000000000100000000000000
+    _repeatCount: 2

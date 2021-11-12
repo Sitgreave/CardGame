@@ -3,6 +3,11 @@
 public class CardDetector : MonoBehaviour
 {
     private GameObject _detectedObject;
+    private GameObject _cardObject;
+    public GameObject CardObject => _cardObject;
+    private Card _selectedCard;
+    public Card SelectedCard => _selectedCard;
+
     private void DetectObject()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -10,11 +15,14 @@ public class CardDetector : MonoBehaviour
         if (hit2D.collider != null) _detectedObject = hit2D.collider.gameObject;
     }
 
-    
-    public Card DetectedCard()
+
+    public void DetectedCard()
     {
         DetectObject();
-        if (_detectedObject.GetComponent<Card>()) return _detectedObject.GetComponent<Card>();
-        else return null;
+        if (_detectedObject.GetComponent<Card>())
+        {
+            _selectedCard = _detectedObject.GetComponent<Card>();
+            _cardObject = _detectedObject;
+        }
     }
 }

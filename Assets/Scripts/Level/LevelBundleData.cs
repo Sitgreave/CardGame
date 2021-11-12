@@ -6,4 +6,6 @@ public class LevelBundleData : ScriptableObject
 {
     [SerializeField] private LevelData[] _levelData;
     public LevelData []LevelData => _levelData;
+
+    
 }

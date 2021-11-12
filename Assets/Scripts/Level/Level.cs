@@ -2,40 +2,38 @@
 
 public class Level : MonoBehaviour
 {
+    [SerializeField] private LevelBundleData _bundleData;
     private int _cardCount;
     public int CardCount => _cardCount;
-    private CardType[] _cardTypeVariants;
-    private CardType _currentType;
-    public CardType CurrentType => _currentType;
     private int _currentLevel = 0;
     public int CurrentLevel => _currentLevel;
+    private int _repeatCount;
+    public int RepeatCount => _repeatCount;
+    public DeckType[] GetDeckTypes(int i)
+    {
+        return _bundleData.LevelData[i].DeckTypeVariants;
+    }
+      
+    public int LevelsCount => _bundleData.LevelData.Length;
     
     public void Initialize(LevelData levelData)
     {
         _cardCount = levelData.CardCount;
-        _cardTypeVariants = levelData.CurrentType;
-        _currentType = (CardType)TypeChoise();
+       
+        _repeatCount = levelData.RepeatCount;
        
     }
-    public enum CardType
-    {
-        letters = 0,
-        numbers = 1
-    }
-
-    private int TypeChoise()
-    {
-        int minTypeId = 0;
-        int maxTypeId = _cardTypeVariants.Length;
-        if (_cardTypeVariants.Length == 1) return minTypeId;
-        else return Random.Range(minTypeId, maxTypeId);
-    }
     
-    public void LevlUp()
-    {
 
+  
+    
+    public void Up()
+    {
         _currentLevel++;
     }
+    public void Reset()
+    {
+        _currentLevel = 0;
+    }
 
-    
 }

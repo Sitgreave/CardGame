@@ -15,7 +15,7 @@ public class CellCreator : MonoBehaviour
     {
         if (cellCount > 0)
         {
-            _cells.Clear();
+            
             for (int i = 0; i < cellCount; i++)
             {
                 Cell cell = Instantiate(_cell, _gridLayoutTransform);
@@ -23,7 +23,13 @@ public class CellCreator : MonoBehaviour
             }
         }
     }
-
-
-
+    public void Create()
+    {
+                Cell cell = Instantiate(_cell, _gridLayoutTransform);
+                _cells.Add(cell);
+    }
 }
+
+
+
+
