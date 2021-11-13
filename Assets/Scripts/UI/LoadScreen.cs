@@ -26,7 +26,7 @@ public class LoadScreen : MonoBehaviour
         {
             _bar.value = async.progress;
 
-            if (async.progress ==.99f && !async.allowSceneActivation)
+            if (async.progress == 0.9f && !async.allowSceneActivation)
             {
                 _text.text = "Press any key to continue";
                 if (Input.anyKey)

@@ -19,6 +19,6 @@ public class TaskUI : MonoBehaviour
     
     public void TextFadeIn()
     {
-        StartCoroutine(_effects.DoFade(1.5f, _canvas, .5f, 1f));
+        _effects.FaidIn(_canvas);
     }
 }

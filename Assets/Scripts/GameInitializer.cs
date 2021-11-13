@@ -24,7 +24,6 @@ public class GameInitializer : MonoBehaviour
     public void Initialize()
     {
         LevelInitialize();
-
             DeckInitialize();
             CardsInitialize();
             TaskInitialize();

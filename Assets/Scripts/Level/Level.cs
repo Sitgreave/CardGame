@@ -9,6 +9,7 @@ public class Level : MonoBehaviour
     public int CurrentLevel => _currentLevel;
     private int _repeatCount;
     public int RepeatCount => _repeatCount;
+
     public DeckType[] GetDeckTypes(int i)
     {
         return _bundleData.LevelData[i].DeckTypeVariants;

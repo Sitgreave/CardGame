@@ -22,9 +22,16 @@ public class EventManager : MonoBehaviour
         _events[type].Invoke();
     }
 
-    public void UnsubscribeAll(EventType eventType)
+    public void Unsubscribe(EventType eventType)
     {
         _events[eventType] = null;
+    }
+    public void UnsubscribeAll()
+    {
+        for (int i = 0; i < _unityEvents.Length; i++)
+        {
+            _unityEvents[i] = null;
+        }
     }
 
 

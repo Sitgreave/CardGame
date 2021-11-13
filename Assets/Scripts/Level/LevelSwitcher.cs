@@ -1,12 +1,10 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
-
 public class LevelSwitcher : MonoBehaviour
 {
    [SerializeField] private Level _level;
-    [SerializeField] private EventManager _eventManager;
-    private int _currentRepeat = 0;
-   
+    private int _currentRepeat = 1;
+    private bool _isLastLevel;
+    public bool IsLastLevel => _isLastLevel;
     public void NextLevel()
     {
         if (_currentRepeat < _level.RepeatCount)
@@ -18,15 +16,10 @@ public class LevelSwitcher : MonoBehaviour
             _level.Up();
             _currentRepeat = 0;
         }
-        else if (_level.CurrentLevel == _level.LevelsCount - 1)
-        {
-            _eventManager.EventTrigger(EventType.EndGame);
-            _eventManager.UnsubscribeAll(EventType.Click);
-        }
-   
-    }
 
-    
+        if (_currentRepeat == _level.RepeatCount  && _level.CurrentLevel == _level.LevelsCount - 1) _isLastLevel = true;
+
+    } 
 
     
 }

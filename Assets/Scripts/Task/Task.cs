@@ -7,6 +7,7 @@ public class Task : MonoBehaviour
     [SerializeField] private CardDetector _cardDetector;
     [SerializeField] private Deck _deck;
     [SerializeField] private DOTEffects _effects;
+    [SerializeField] LevelSwitcher _levelSwitcher;
     private Card _rightCard;
     public Card RightCard => _rightCard;
 
@@ -37,34 +38,35 @@ public class Task : MonoBehaviour
         return card == _rightCard ;
     }
 
-   
+
     public void ChooseCard()
     {
+        EventType eventType;
         if (_cardDetector.SelectedCard != null)
         {
             if (IsRight(_cardDetector.SelectedCard))
             {
-                _eventManager.EventTrigger(EventType.RightAnswer);
-                Invoke(nameof (RightAnswer), 1.2f);
+                eventType = EventType.RightAnswer;
+                Invoke(nameof(RightAnswer), 1.2f);
             }
             else
             {
-                _eventManager.EventTrigger(EventType.WrongAnswer);
-                WrongAnswer();
+                eventType = EventType.WrongAnswer;
             }
+            _eventManager.EventTrigger(eventType);
+
         }
     }
 
     private void RightAnswer()
     {
-
-        _eventManager.EventTrigger(EventType.LevelSwitch);
-
+        if (!_levelSwitcher.IsLastLevel)
+        {
+            _levelSwitcher.NextLevel();
+            _eventManager.EventTrigger(EventType.LevelSwitch);
+        }
+        else _eventManager.EventTrigger(EventType.EndGame);
     }
 
-    private void WrongAnswer()
-    {
-        //
-    }
 
 }

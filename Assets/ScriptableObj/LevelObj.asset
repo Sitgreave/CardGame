@@ -15,10 +15,10 @@ MonoBehaviour:
   _levelData:
   - _cardCount: 3
     _deckTypeVariants: 00000000
-    _repeatCount: 2
+    _repeatCount: 3
   - _cardCount: 6
     _deckTypeVariants: 0000000001000000
-    _repeatCount: 2
+    _repeatCount: 3
   - _cardCount: 9
     _deckTypeVariants: 000000000100000000000000
-    _repeatCount: 2
+    _repeatCount: 4

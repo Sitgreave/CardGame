@@ -32,7 +32,7 @@ MonoBehaviour:
     _sprite: {fileID: -7015292045520539579, guid: a8823830bdc0255459eee8153d375cd3,
       type: 3}
   - _description: 8
-    _sprite: {fileID: 3547489320769246608, guid: a8823830bdc0255459eee8153d375cd3,
+    _sprite: {fileID: 190938035928787543, guid: 8e233313ecd3e984e985c398d7f40757,
       type: 3}
   - _description: 9
     _sprite: {fileID: -1155199509967091035, guid: 980329ad228ee8c479043ec0dbf8ca24,
@@ -41,5 +41,5 @@ MonoBehaviour:
     _sprite: {fileID: 4142021021139464533, guid: fb32cf3eee9455d4a93cbef7642630b9,
       type: 3}
   - _description: 7
-    _sprite: {fileID: -675344402919758444, guid: a8823830bdc0255459eee8153d375cd3,
+    _sprite: {fileID: 4709089551643580532, guid: 8e233313ecd3e984e985c398d7f40757,
       type: 3}
